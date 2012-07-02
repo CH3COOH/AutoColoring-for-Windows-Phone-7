@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoColor", "AutoColor\AutoColor.csproj", "{A993080F-D749-4E59-9C41-88EFB1EAB53B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiCoCu", "GiCoCu\GiCoCu.csproj", "{9FD83816-8011-4903-A182-939805989F89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A993080F-D749-4E59-9C41-88EFB1EAB53B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9FD83816-8011-4903-A182-939805989F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD83816-8011-4903-A182-939805989F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD83816-8011-4903-A182-939805989F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD83816-8011-4903-A182-939805989F89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

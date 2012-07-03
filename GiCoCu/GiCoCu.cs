@@ -26,7 +26,9 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+#if WINDOWS_PHONE
 using System.Windows.Media.Imaging;
+#endif
 
 namespace GenericVideoFilter
 {
@@ -42,33 +44,39 @@ namespace GenericVideoFilter
             _curve = curve;
         }
 
-        public WriteableBitmap Process(WriteableBitmap src)
+        private int[] ProcessInternal(int[] srcPixels, int width, int height)
         {
-            int width = src.PixelHeight;
-            int height = src.PixelHeight;
-
-            var dst = new WriteableBitmap(width, height);
-
-            // 画処理のためビットマップからbyte配列にコピーする
-            var bytes = new int[width * height];
-            src.Pixels.CopyTo(bytes, 0);
+            int[] dst = new int[width * height];
 
             // マッピングされたカーブテーブルを元に疑似着色を実施する
             for (int y = 0; y < height; y++)
                 for (int x = 0; x < width; x++)
                 {
-                    int argb = bytes[x + y * width];
+                    int argb = srcPixels[x + y * width];
                     int a = _curve.Data[4, (argb & 0xff000000) >> 24];
                     int r = _curve.Data[0, _curve.Data[1, (argb & 0x00ff0000) >> 16]];
                     int g = _curve.Data[0, _curve.Data[2, (argb & 0x0000ff00) >> 8]];
                     int b = _curve.Data[0, _curve.Data[3, (argb & 0x000000ff)]];
-                    bytes[x + y * width] = a << 24 | r << 16 | g << 8 | b;
+                    dst[x + y * width] = a << 24 | r << 16 | g << 8 | b;
                 }
-
-            // 画処理後のbyte配列を出力側のビットマップへコピーする
-            bytes.CopyTo(dst.Pixels, 0);
 
             return dst;
         }
+
+#if WINDOWS_PHONE
+        public WriteableBitmap Process(WriteableBitmap src)
+        {
+            int w = src.PixelWidth;
+            int h = src.PixelHeight;
+
+            var dstPixels = ProcessInternal(src.Pixels, w, h);
+
+            // 画処理後のbyte配列を出力側のビットマップへコピーする
+            var dst = new WriteableBitmap(w, h);
+            dstPixels.CopyTo(dst.Pixels, 0);
+
+            return dst;
+        }
+#endif
     }
 }

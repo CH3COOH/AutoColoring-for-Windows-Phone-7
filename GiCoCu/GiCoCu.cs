@@ -44,7 +44,7 @@ namespace GenericVideoFilter
 
         public WriteableBitmap Process(WriteableBitmap src)
         {
-            int width = src.PixelHeight;
+            int width = src.PixelWidth;
             int height = src.PixelHeight;
 
             var dst = new WriteableBitmap(width, height);
